@@ -57,3 +57,23 @@ public class Menu {
         }
     }
 }
+
+// Extensions
+
+extension Int {
+
+    static postfix func ++(lhs: inout Int) -> Int {
+        lhs += 1
+        return lhs
+    }
+}
+
+extension Array {
+
+    mutating func swap(_ ind1: Int, _ ind2: Int){
+        var temp: Element
+        temp = self[ind1]
+        self[ind1] = self[ind2]
+        self[ind2] = temp
+    }
+}
