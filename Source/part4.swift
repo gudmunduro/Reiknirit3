@@ -1,31 +1,29 @@
+import Foundation
+
+let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+                    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                    "u", "v", "w", "x", "y", "z", ]
 
 func genAllStrings(_ n: Int) -> [String]
 {
-    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
-                    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-                    "u", "v", "w", "x", "y", "z", ]
-    var allPossibleStrings: [String] = []
-    var randomCharacterNumbers: [Int] = []
-    var currentCharIndex = 0
-    var index = 0
-    for i in 0...n - 1 {
-        randomCharacterNumbers.append(0)
+    if n == 1 {
+        return alphabet
     }
-    while !(currentCharIndex == n - 1 && randomCharacterNumbers.last == alphabet.count - 1)
-    {
-        var rndString = ""
-        for ci in randomCharacterNumbers {
-            rndString.append(alphabet[ci])
+
+    let currentStrings = genAllStrings(n - 1)
+    var newStrings: [String] = [] 
+
+    for str in currentStrings {
+        for c in alphabet {
+            guard !str.contains(c) else {
+                continue
+            }
+
+            newStrings.append(str + c)
         }
-        allPossibleStrings.append(rndString)
-        currentCharIndex++
-        if currentCharIndex == randomCharacterNumbers.count {
-            index++
-            currentCharIndex = 0
-        }
-        randomCharacterNumbers[currentCharIndex]++
     }
-    return allPossibleStrings
+    
+    return newStrings
 }
 
 func runPart4()
@@ -34,7 +32,23 @@ func runPart4()
         print("Tala er ekki gild")
         return
     }
-    for s in genAllStrings(charCount) {
-        print(s)
+
+    let start = DispatchTime.now() // Tímamæling byrjar
+    let allStrings = genAllStrings(charCount)
+    let end = DispatchTime.now()   // Tímamæling byrjar
+
+    let funcTime = Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000
+
+    print("Fallið tók \(funcTime) að fyrir fjöldann \(charCount)")
+
+    if allStrings.count > 100 {
+
+        if ask("Strengirnir eru fleyri en 100 (\(allStrings.count)).  Villtu samt láta prenta þá") {
+            allStrings.printAll()
+        }
+
+    } else {
+        allStrings.printAll()
     }
+    print("Fjöldi: \(allStrings.count)")
 }

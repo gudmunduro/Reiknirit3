@@ -1,23 +1,45 @@
 
 // Functions
 
-public func input(_ message: String = "") -> String?
+public func input(_ message: String = "", seperator: String = ": ") -> String?
 {
-    print(message, terminator: ": ")
+    print(message, terminator: seperator)
     return readLine()
 }
 
-public func input(_ message: String = "") -> Int?
+public func input(_ message: String = "", seperator: String = ": ") -> Int?
 {
-    print(message, terminator: ": ")
+    print(message, terminator: seperator)
     let inp = readLine()
     return (inp != nil) ? Int(inp!) : nil
 }
 
+public func ask(_ message: String = "") -> Bool
+{
+    let yesAnswers: [String] = ["já", "ja", "y", "yes", "j"]
+    let noAnswers: [String] = ["nei", "n", "no"]
+
+    while true {
+        guard let inp: String = input(message, seperator: "? ") else {
+            print("Svar er ekki gilt")
+            continue
+        }
+
+        if yesAnswers.contains(inp.lowercased()) {
+            return true
+        } else if noAnswers.contains(inp.lowercased()) {
+            return false
+        } else {
+            print("Svar er ekki gilt")
+            continue
+        }
+    }
+}
 
 // Classes
 
 public class Menu {
+
     let title: String
     public fileprivate(set) var options: [(text: String, option: () -> Void)]
 
@@ -75,5 +97,12 @@ extension Array {
         temp = self[ind1]
         self[ind1] = self[ind2]
         self[ind2] = temp
+    }
+
+    func printAll()
+    {
+        for element in self {
+            print(element)
+        }
     }
 }
