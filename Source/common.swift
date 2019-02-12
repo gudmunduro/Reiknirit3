@@ -90,6 +90,21 @@ extension Int {
     }
 }
 
+extension String {
+
+    subscript (range: Range<Int>) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
+        let endIndex = self.index(self.startIndex, offsetBy: range.upperBound)
+        return String(self[startIndex..<endIndex])
+    }
+
+    subscript (value: Int) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: value)
+        let endIndex = self.index(self.startIndex, offsetBy: value + 1)
+        return String(self[startIndex..<endIndex])
+    }
+}
+
 extension Array {
 
     mutating func swap(_ ind1: Int, _ ind2: Int){

@@ -33,13 +33,13 @@ func runPart4()
         return
     }
 
-    let start = DispatchTime.now() // Tímamæling byrjar
+    //let start = DispatchTime.now() // Tímamæling byrjar
     let allStrings = genAllStrings(charCount)
-    let end = DispatchTime.now()   // Tímamæling byrjar
+    //let end = DispatchTime.now()   // Tímamæling byrjar
 
-    let funcTime = Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000
+    //let funcTime = Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000
 
-    print("Fallið tók \(funcTime) að fyrir fjöldann \(charCount)")
+    //print("Fallið tók \(funcTime) að fyrir fjöldann \(charCount)")
 
     if allStrings.count > 100 {
 
