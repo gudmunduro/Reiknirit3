@@ -1,7 +1,6 @@
  # Reiknirit - Verkefni 3
-## Ekki tilbúið því allur tíminn er búinn að fara í að vinna í robotinum
 
-
+![Flæðirit](flaedirit.png)
 
 2. Hann væri O(2n) því fallið keyrir tvisvar í hvert sinn sem það keyrir.
 
@@ -21,7 +20,3 @@
     1. Já það skipti máli því það fer með for loopu gegnum strenginn svo það tekur lengri tínma ef hann er lengri.
     2. Hún kláraði aldrei af einhverji ástæði, líka með -Ounchecked sem ætti að compila í næstum eins kóða og C.  En það ætti að vera O(m*n*r) þar sem r er hversu oft það þarf að fara gegnum listann.
     3. Já hún myndi gera það því það er mun fljótlegra að bera saman heiltölur
-
-
-
-
