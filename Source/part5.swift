@@ -3,12 +3,12 @@
 func sortStrings(strings: [String]) -> [String]
 {
     var newStrings = strings
-    var nonSorted = true
+    var noneSorted = true
     var startValue = 0
     var endValue = newStrings.count
     
     repeat {
-        nonSorted = true
+        noneSorted = true
         startValue = (startValue == 0) ? 1 : 0
         endValue = (endValue == newStrings.count) ? newStrings.count - 1 : newStrings.count
         for i in stride(from: startValue, to: endValue, by: 2) {
@@ -23,12 +23,12 @@ func sortStrings(strings: [String]) -> [String]
 
                 if alphabet.index(of: str[c])! > alphabet.index(of: str2[c])! {
                     newStrings.swap(i, i2)
-                    nonSorted = false
+                    noneSorted = false
                     break stringFor
                 }
             }
         }
-    } while !nonSorted
+    } while !noneSorted
     return newStrings
 }
 
